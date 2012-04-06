@@ -1,8 +1,10 @@
-vgod's vimrc
+Milnex's vimrc
 ============
-Author: Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
+* Author: Milnex Ming-Ying Chung
+  + Fork me on GITHUB https://github.com/Milnex/vimrc .
 
-Fork me on GITHUB  https://github.com/vgod/vimrc.
+* Derived from [vgod/vimrc](https://github.com/vgod/vimrc)
+  + Author: Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
 
 ONE-STEP INSTALL
 ----------------
