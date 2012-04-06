@@ -248,9 +248,9 @@ set fileencoding=utf-8
 set fileencodings=bucs-bom,utf-8ig5,gb2312,latin1
 
 " handle menu & console message encoding problems under Windows 
-if has("win32")
+if has("win32") && has("gui_running")
     set langmenu=zh_tw.utf-8
-    " reload menu with UTF-8 encoding
+    " reload GUI menu with UTF-8 encoding
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
     language messages zh_tw.utf-8         " console messsage encoding
