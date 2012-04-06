@@ -37,15 +37,19 @@ syntax on		" syntax highlight
 set hlsearch		" search highlighting
 
 if has("gui_running")	" GUI color and font settings
-  set guifont=Osaka-Mono:h20
-  set background=dark 
-  set t_Co=256          " 256 color mode
-  set cursorline        " highlight current line
-  colors moria
-  highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
+    if has("gui_win32")
+        set guifont=Consolas:h14:cANSI
+    else
+        set guifont=Osaka-Mono:h20
+    endif
+    set background=dark 
+    set t_Co=256          " 256 color mode
+    set cursorline        " highlight current line
+    colors moria
+    highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 else
-" terminal color settings
-  colors vgod
+    " terminal color settings
+    colors vgod
 endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
