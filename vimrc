@@ -77,8 +77,9 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=4 
-   set shiftwidth=4 
+   set tabstop=4        "display 1 <TAB> as 4 spaces
+   set softtabstop=4    "insert 4 spaces when press <TAB>
+   set shiftwidth=4     "indent using << or >> equal to 4 spaces
 
    au FileType Makefile set noexpandtab
 "}      							
