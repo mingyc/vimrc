@@ -1,10 +1,9 @@
 Milnex's vimrc
 ============
-* Author: Milnex Ming-Ying Chung
-  + Fork me on GITHUB https://github.com/Milnex/vimrc .
+* Author: Milnex Ming-Ying Chung <itsmings@gmail.com>
+  + Fork me on GITHUB https://github.com/Milnex/vimrc
 
-* Derived from [vgod/vimrc](https://github.com/vgod/vimrc)
-  + Author: Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
+* Derived from Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>'s [vgod/vimrc](https://github.com/vgod/vimrc)
 
 ONE-STEP INSTALL
 ----------------
