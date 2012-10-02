@@ -338,4 +338,4 @@ let g:tagbar_autofocus = 1
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
 
 " --- PowerLine
-let g:yankring_history_dir = "$HOME/.vim/etc"
+let g:yankring_history_dir = "$HOME/.vim"
