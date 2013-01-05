@@ -39,9 +39,9 @@ set hlsearch		" search highlighting
 
 if has("gui_running")	" GUI color and font settings
     if has("gui_win32")
-        set guifont=Consolas:h14:cANSI
+        set guifont=Monaco:h14:cANSI
     else
-        set guifont=Osaka-Mono:h20
+        set guifont=Monaco:h20
     endif
     set background=dark 
     set t_Co=256          " 256 color mode
