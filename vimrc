@@ -6,8 +6,10 @@
 " read https://github.com/Milnex/vimrc/blob/master/README.md for more info
 
 
-" For pathogen.vim: auto load all plugins in .vim/bundle
+" Load pathogen.vim
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 
+" For pathogen.vim: auto load all plugins in .vim/bundle
 let g:pathogen_disabled = []
 if !has('gui_running')
    call add(g:pathogen_disabled, 'powerline')
