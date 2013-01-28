@@ -1,2 +1,5 @@
 *.pyc
 yankring_history_*.txt
+
+*.swp
+*~
