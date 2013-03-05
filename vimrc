@@ -255,7 +255,7 @@ autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 set encoding=utf-8                                  
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=bucs-bom,utf-8ig5,gb2312,latin1
+set fileencodings=utf-8,bucs-bom,big5,gb2312,latin1
 
 " handle menu & console message encoding problems under Windows 
 if has("win32") && has("gui_running")
