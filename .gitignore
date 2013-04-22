@@ -1,5 +1,7 @@
 *.pyc
 yankring_history_*.txt
 
+*.symlink
+
 *.swp
 *~
