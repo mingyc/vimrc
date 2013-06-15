@@ -54,6 +54,7 @@ if has("gui_running")	" GUI color and font settings
 else
     " terminal color settings
     set background=dark
+    let g:solarized_termtrans = 1
     colors solarized
 endif
 
@@ -73,6 +74,16 @@ set copyindent		" copy the previous indentation on autoindenting
 set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
+
+" Separate .swp files from working directories
+if has("win32") || has("win64")
+    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\swap'
+    set directory=$HOME\\AppData\\Roaming\\vim\\swap\\\\
+else
+    silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+    " the succeeding double slash '//' enable distinct file names
+    set directory=$HOME/.vim/tmp/swap//
+endif
 
 " disable sound on errors
 set noerrorbells
@@ -341,13 +352,11 @@ let g:tagbar_autofocus = 1
 " --- PowerLine
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
 
-" --- PowerLine
-if has("gui_win32")
-    "FIXME: mkdir error under windows command line
-    "if !isdirectory("$HOME/AppData/Roaming/vim")
-    "    silent execute '!mkdir "$HOME/AppData/Roaming/vim"'
-    "endif
-    let g:yankring_history_dir = "$HOME"
+" --- Yankring
+if has("win32") || has("win64")
+    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\yankring'
+    let g:yankring_history_dir = "$HOME\\AppData\\Roaming\\vim\\yankring"
 else
-    let g:yankring_history_dir = "$HOME/.vim"
+    silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
+    let g:yankring_history_dir = "$HOME/.vim/tmp/yankring"
 endif
