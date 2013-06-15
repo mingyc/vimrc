@@ -54,6 +54,7 @@ if has("gui_running")	" GUI color and font settings
 else
     " terminal color settings
     set background=dark
+    let g:solarized_termtrans = 1
     colors solarized
 endif
 
