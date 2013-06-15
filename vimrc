@@ -75,14 +75,18 @@ set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
 
-" Separate .swp files from working directories
+" Separate .swp files and *~ files from working directories
 if has("win32") || has("win64")
-    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\swap'
-    set directory=$HOME\\AppData\\Roaming\\vim\\swap\\\\
+    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\swap'     
+    set directory=$HOME\\AppData\\Roaming\\vim\\swap\\\\              " set *.swp location
+    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\backup'
+    set backupdir=$HOME\\AppData\\Roaming\\vim\\backup\\\\            " set *~ location
 else
     silent execute '!mkdir -p $HOME/.vim/tmp/swap'
     " the succeeding double slash '//' enable distinct file names
-    set directory=$HOME/.vim/tmp/swap//
+    set directory=$HOME/.vim/tmp/swap//                               " set *.swp location
+    silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+    set backupdir=$HOME/.vim/tmp/backup//                             " set *~ location
 endif
 
 " disable sound on errors
