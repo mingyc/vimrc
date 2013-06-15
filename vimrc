@@ -352,13 +352,11 @@ let g:tagbar_autofocus = 1
 " --- PowerLine
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
 
-" --- PowerLine
-if has("gui_win32")
-    "FIXME: mkdir error under windows command line
-    "if !isdirectory("$HOME/AppData/Roaming/vim")
-    "    silent execute '!mkdir "$HOME/AppData/Roaming/vim"'
-    "endif
-    let g:yankring_history_dir = "$HOME"
+" --- Yankring
+if has("win32") || has("win64")
+    silent execute '!mkdir -p $HOME\\AppData\\Roaming\\vim\\yankring'
+    let g:yankring_history_dir = "$HOME\\AppData\\Roaming\\vim\\yankring"
 else
-    let g:yankring_history_dir = "$HOME/.vim"
+    silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
+    let g:yankring_history_dir = "$HOME/.vim/tmp/yankring"
 endif
