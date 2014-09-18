@@ -16,7 +16,6 @@ if !has('gui_running')
 endif
 
 call pathogen#infect()  " solve filetype problem by force it off initially
-call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " General Settings
