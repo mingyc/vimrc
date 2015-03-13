@@ -22,12 +22,6 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip.git
-[submodule "bundle/OmniCppComplete"]
-	path = bundle/OmniCppComplete
-	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule "bundle/javacomplete"]
-	path = bundle/javacomplete
-	url = https://github.com/vim-scripts/javacomplete
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -40,9 +34,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "bundle/pythoncomplete"]
-	path = bundle/pythoncomplete
-	url = https://github.com/vim-scripts/pythoncomplete.git
 [submodule "bundle/powerline"]
 	path = bundle/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
