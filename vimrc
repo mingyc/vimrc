@@ -363,3 +363,9 @@ else
     silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
     let g:yankring_history_dir = "$HOME/.vim/tmp/yankring"
 endif
+
+" Has local config, or not:
+if filereadable(expand('~/.vimrc_local'))
+    source ~/.vimrc_local
+else
+endif
