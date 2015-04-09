@@ -1,22 +1,12 @@
-" Milnex's vimrc
+" Ming's vimrc
 " ==============
-" Milnex Ming-Ying Chung <itsmings@gmail.com>, fork me on GITHUB  https://github.com/Milnex/vimrc
+" Ming-Ying Chung <itsmings@gmail.com>, fork me on GITHUB  https://github.com/mingyc/vimrc
 " derived from Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>'s vimrc  https://github.com/vgod/vimrc
 
-" read https://github.com/Milnex/vimrc/blob/master/README.md for more info
 
+" Load Vundle
+source $HOME/.vim/bundles.vim
 
-" Load pathogen.vim
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-" For pathogen.vim: auto load all plugins in .vim/bundle
-let g:pathogen_disabled = []
-if !has('gui_running')
-   call add(g:pathogen_disabled, 'powerline')
-endif
-
-call pathogen#infect()  " solve filetype problem by force it off initially
-call pathogen#helptags()
 
 " General Settings
 
@@ -352,8 +342,10 @@ nnoremap <silent> <F7> :TagbarToggle<CR>
 " set focus to TagBar when opening it
 let g:tagbar_autofocus = 1
 
-" --- PowerLine
+" --- Airline 
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
+" let g:airline#extensions#tabline#enabled = 1    " display all buffers
+let g:airline_theme='tomorrow'
 
 " --- Yankring
 if has("win32") || has("win64")
@@ -365,7 +357,7 @@ else
 endif
 
 " Has local config, or not:
-if filereadable(expand('~/.vimrc_local'))
+if filereadable(expand('$HOME/.vimrc_local'))
     source ~/.vimrc_local
 else
 endif

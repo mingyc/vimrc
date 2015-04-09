@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/ming/Workspace/OnDemandInfrastructure/.git'
-let g:netrw_dirhist_2='/Users/ming/Projects/cs6998-10/assignment2/YaTube/views'
-let g:netrw_dirhist_3='/Users/ming/Projects/vdb/agestimator-server'
