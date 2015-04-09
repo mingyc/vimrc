@@ -1,8 +1,8 @@
+bundle/*
+!bundle/Vundle.vim/*
 tmp/*
 
 *.pyc
-
 *.symlink
-
 *.swp
 *~
