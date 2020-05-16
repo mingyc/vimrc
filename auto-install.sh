@@ -14,13 +14,14 @@ die() {
 [ -e "~/.vim" ] && die "~/.vim already exists."
 [ -e "~/.vimrc" ] && die "~/.vimrc already exists."
 
-git clone git://github.com/Milnex/vimrc.git "$VIMHOME"
+git clone git://github.com/mingyc/vimrc.git "$VIMHOME"
 cd "$VIMHOME"
 git submodule update --init
+vim +PluginInstall +qall 
 
 ./install-vimrc.sh
 
 cd bundle/command-t/ruby/command-t
 (ruby extconf.rb && make) || warn "Can't compile Command-T."
 
-echo "Milnex's vimrc is installed."
+echo "Ming's vimrc is installed."

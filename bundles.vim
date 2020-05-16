@@ -13,7 +13,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'tpope/vim-surround'
 Bundle 'majutsushi/tagbar'
 Bundle 'kchmck/vim-coffee-script'
@@ -27,6 +28,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'wavded/vim-stylus'
 Bundle 'sukima/xmledit'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
