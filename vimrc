@@ -345,7 +345,7 @@ let g:tagbar_autofocus = 1
 " --- Airline 
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
 " let g:airline#extensions#tabline#enabled = 1    " display all buffers
-let g:airline_theme='tomorrow'
+let g:airline_theme='solarized'
 
 " --- Yankring
 if has("win32") || has("win64")
