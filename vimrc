@@ -1,11 +1,33 @@
-" Ming's vimrc
-" ==============
-" Ming-Ying Chung <itsmings@gmail.com>, fork me on GITHUB  https://github.com/mingyc/vimrc
-" derived from Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>'s vimrc  https://github.com/vgod/vimrc
+" Install Plugins {
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Load Vundle
-source $HOME/.vim/bundles.vim
+call plug#begin()
+
+Plug 'lifepillar/vim-solarized8'
+Plug 'tribela/vim-transparent'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/YankRing.vim'
+
+call plug#end()
+" }
 
 
 " General Settings
@@ -29,24 +51,6 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 syntax on		" syntax highlight
 set hlsearch		" search highlighting
 
-if has("gui_running")	" GUI color and font settings
-    if has("gui_win32")
-        set guifont=Monaco:h14:cANSI
-    else
-        set guifont=Monaco:h20
-    endif
-    set background=dark 
-    set t_Co=256          " 256 color mode
-    set cursorline        " highlight current line
-    colors solarized
-    highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
-else
-    " terminal color settings
-    set background=dark
-    let g:solarized_termtrans = 1
-    colors solarized
-endif
-
 set clipboard=unnamed	" yank to the system register (*) by default
 set showmatch		" Cursor shows matching ) and }
 set showmode		" Show current mode
@@ -63,6 +67,8 @@ set copyindent		" copy the previous indentation on autoindenting
 set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
+set number          " show absolute line number
+
 
 " Separate .swp files and *~ files from working directories
 if has("win32") || has("win64")
@@ -84,44 +90,20 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" TAB setting{
+" TAB setting {
    set expandtab        "replace <TAB> with spaces
    set tabstop=4        "display 1 <TAB> as 4 spaces
    set softtabstop=4    "insert 4 spaces when press <TAB>
    set shiftwidth=4     "indent using << or >> equal to 4 spaces
 
    au FileType Makefile set noexpandtab
-"}      							
-
-" status line {
-set laststatus=2
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
-set statusline+=\ \ \ [%{&ff}/%Y] 
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
-
-function! CurDir()
-    let curdir = substitute(getcwd(), $HOME, "~", "")
-    return curdir
-endfunction
-
-function! HasPaste()
-    if &paste
-        return '[PASTE]'
-    else
-        return ''
-    endif
-endfunction
-
-"}
+" }      							
 
 
-" C/C++ specific settings
-autocmd FileType c,cpp,cc  set cindent comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
-
-"Restore cursor to file position in previous editing session
+" Restore cursor to file position in previous editing session {
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+" }
 
 "--------------------------------------------------------------------------- 
 " Tip #382: Search for <cword> and replace with input() in all open buffers 
@@ -229,30 +211,6 @@ fun! IncludeGuard()
 endfun
 
 
-
-" Enable omni completion. (Ctrl-X Ctrl-O)
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType java set omnifunc=javacomplete#Complete
-
-" use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-              \	if &omnifunc == "" |
-              \		setlocal omnifunc=syntaxcomplete#Complete |
-              \	endif
-endif
-
-set cot-=preview "disable doc preview in omnicomplete
-
-" make CSS omnicompletion work for SASS and SCSS
-autocmd BufNewFile,BufRead *.scss             set ft=scss.css
-autocmd BufNewFile,BufRead *.sass             set ft=sass.css
-
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
@@ -292,49 +250,14 @@ endfun
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
 
-
-" ------- vim-latex - many latex shortcuts and snippets {
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-set grepprg=grep\ -nH\ $*
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-"}
-
-
-" --- AutoClose - Inserts matching bracket, paren, brace or quote 
-" fixed the arrow key problems caused by AutoClose
-if !has("gui_running")	
-   set term=linux
-   imap OA <ESC>ki
-   imap OB <ESC>ji
-   imap OC <ESC>li
-   imap OD <ESC>hi
-
-   nmap OA k
-   nmap OB j
-   nmap OC l
-   nmap OD h
-endif
-
-
-
-" --- Command-T
-let g:CommandTMaxHeight = 15
-
-" --- SuperTab
-let g:SuperTabDefaultCompletionType = "context"
+" --- solorized8
+set background=dark
+autocmd vimenter * ++nested colorscheme solarized8
 
 " --- EasyMotion
 "let g:EasyMotion_leader_key = '<Leader>m' " default is <Leader>w
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
-
 
 " --- TagBar
 " toggle TagBar with F7
@@ -344,7 +267,8 @@ let g:tagbar_autofocus = 1
 
 " --- Airline 
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
-" let g:airline#extensions#tabline#enabled = 1    " display all buffers
+let g:airline#extensions#tabline#enabled = 1    " display all buffers
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_theme='solarized'
 
 " --- Yankring
@@ -355,6 +279,7 @@ else
     silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
     let g:yankring_history_dir = "$HOME/.vim/tmp/yankring"
 endif
+
 
 " Has local config, or not:
 if filereadable(expand('$HOME/.vimrc_local'))

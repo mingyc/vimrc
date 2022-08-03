@@ -10,18 +10,15 @@ die() {
     exit 1
 }
 
+[ -e "$VIMHOME" ] && die "$VIMHOME already exists."
 [ -e "$VIMHOME/vimrc" ] && die "$VIMHOME/vimrc already exists."
-[ -e "~/.vim" ] && die "~/.vim already exists."
 [ -e "~/.vimrc" ] && die "~/.vimrc already exists."
 
 git clone git://github.com/mingyc/vimrc.git "$VIMHOME"
 cd "$VIMHOME"
-git submodule update --init
-vim +PluginInstall +qall 
+vim +PlugInstall +qall
 
-./install-vimrc.sh
-
-cd bundle/command-t/ruby/command-t
-(ruby extconf.rb && make) || warn "Can't compile Command-T."
+cd ~/
+ln -s .vim/vimrc .vimrc
 
 echo "Ming's vimrc is installed."
